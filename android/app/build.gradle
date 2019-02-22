@@ -94,21 +94,27 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.3"
-    defaultConfig {
-        applicationId "com.awesomeplaces"
-        minSdkVersion 26
-//        targetSdkVersion rootProject.ext.targetSdkVersion
-        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"
-//        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative56"
-        versionCode 1
-        versionName "1.0"
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+     compileSdkVersion rootProject.ext.compileSdkVersion
+       buildToolsVersion rootProject.ext.buildToolsVersion
+
+       defaultConfig {
+           applicationId "com.awesomePlaces"
+           minSdkVersion rootProject.ext.minSdkVersion
+           targetSdkVersion rootProject.ext.targetSdkVersion
+           missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"
+           versionCode 1
+           versionName "1.0"
+           ndk {
+               abiFilters "armeabi-v7a", "x86"
+           }
+       }
+      compileOptions {
+          sourceCompatibility 1.8
+          targetCompatibility 1.8
+
+          //sourceCompatibility JavaVersion.VERSION_1_8
+          //targetCompatibility JavaVersion.VERSION_1_8
+      }
     splits {
         abi {
             reset()
@@ -140,14 +146,20 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support' && requested.name != 'multidex') {
+            details.useVersion "${rootProject.ext.supportLibVersion}"
+        }
+    }
+}
+
 dependencies {
-    implementation project(':react-native-vector-icons')
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:recyclerview-v7:26.1.0"
-    implementation "com.android.support:animated-vector-drawable:26.1.0 "
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.android.support:design:25.4.0'
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-    implementation 'com.facebook.react:react-native:+'
-    // From node_modules
+    implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-navigation')
 }
