@@ -56,23 +56,24 @@ Navigation.registerComponent(
 );
 
 // Start an App
-
 Navigation.events().registerAppLaunchedListener(() => {
 	Navigation.setRoot({
 		root: {
 			stack: {
-				children: [{
-					component: {
-						name: "awesome-places.AuthScreen",
-						options: {
-							topBar: {
-								title: {
-									text: 'Welcome'
+				children: [
+					{
+						component: {
+							name: "awesome-places.AuthScreen",
+							options: {
+								topBar: {
+									title: {
+										text: 'Welcome'
+									}
 								}
 							}
 						}
 					}
-				}],
+				],
 
 			}
 		}
