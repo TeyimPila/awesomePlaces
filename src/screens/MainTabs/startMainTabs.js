@@ -110,48 +110,6 @@ const startTabs = () => {
 			}
 		});
 	});
-
-
-	// Navigation.startTabBasedApp({
-	// 	tabs: [
-	// 		{
-	// 			screen: "awesome-places.FindPlaceScreen",
-	// 			label: "Find Place",
-	// 			title: "Find Place",
-	// 			icon: imageSources[0],
-	// 			navigatorButtons: {
-	// 				leftButtons: [
-	// 					{
-	// 						icon: imageSources[2],
-	// 						title: "Menu",
-	// 						id: "sideDrawerToggle"
-	// 					}
-	// 				]
-	// 			}
-	// 		},
-	// 		{
-	// 			screen: "awesome-places.SharePlaceScreen",
-	// 			label: "Share Place",
-	// 			title: "Share Place",
-	// 			icon: imageSources[1],
-	// 			navigatorButtons: {
-	// 				leftButtons: [
-	// 					{
-	// 						icon: imageSources[2],
-	// 						title: "Menu",
-	// 						id: "sideDrawerToggle"
-	// 					}
-	// 				]
-	// 			}
-	// 		}
-	// 	],
-	// 	drawer: {
-	// 		left: {
-	// 			screen: "awesome-places.SideDrawer"
-	// 		}
-	// 	}
-	// })
-	// })
 };
 
 export default startTabs;
