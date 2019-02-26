@@ -3,13 +3,15 @@ const admin = require("firebase-admin");
 const cors = require("cors")({ origin: true });
 const fs = require("fs");
 const UUID = require("uuid-v4");
+const {Storage} = require("@google-cloud/storage");
+
 
 const gcconfig = {
 	projectId: "the-awesome-places",
 	keyFilename: "awesome-places.json"
 };
 
-const gcs = require("@google-cloud/storage")(gcconfig);
+const gcs = new Storage(gcconfig);
 
 admin.initializeApp({
 	credential: admin.credential.cert(require("./awesome-places.json"))
