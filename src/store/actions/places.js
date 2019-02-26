@@ -23,7 +23,7 @@ export const addPlace = (placeName, location, image) => {
 			.then(token => {
 				authToken = token;
 				return fetch(
-					"https://us-central1-awesome-places-1511248766522.cloudfunctions.net/storeImage",
+					"https://us-central1-the-awesome-places.cloudfunctions.net/storeImage",
 					{
 						method: "POST",
 						body: JSON.stringify({
