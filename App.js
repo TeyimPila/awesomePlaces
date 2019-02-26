@@ -52,6 +52,11 @@ Navigation.registerComponent(
 );
 Navigation.registerComponent(
 	"awesome-places.SideDrawer",
+	() => (props) => (
+		<Provider store={store}>
+			<SideDrawer {...props}/>
+		</Provider>
+	),
 	() => SideDrawer
 );
 

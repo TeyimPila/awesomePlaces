@@ -62,7 +62,7 @@ class PlaceDetail extends Component {
 							}}
 							style={styles.map}
 						>
-							<MapView.Marker coordinate={this.props.selectedPlace.location}/>
+							<MapView.Marker coordinate={this.props.selectedPlace.location} />
 						</MapView>
 					</View>
 				</View>
