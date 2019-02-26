@@ -55,7 +55,7 @@ export const addPlace = (placeName, location, image) => {
 					imagePath: parsedRes.imagePath
 				};
 				return fetch(
-					"https://awesome-places-1511248766522.firebaseio.com/places.json?auth=" +
+					"https://the-awesome-places.firebaseio.com/places.json?auth=" +
 					authToken,
 					{
 						method: "POST",
@@ -94,7 +94,7 @@ export const getPlaces = () => {
 		dispatch(authGetToken())
 			.then(token => {
 				return fetch(
-					"https://awesome-places-1511248766522.firebaseio.com/places.json?auth=" +
+					"https://the-awesome-places.firebaseio.com/places.json?auth=" +
 					token
 				);
 			})
@@ -144,7 +144,7 @@ export const deletePlace = key => {
 			.then(token => {
 				dispatch(removePlace(key));
 				return fetch(
-					"https://awesome-places-1511248766522.firebaseio.com/places/" +
+					"https://the-awesome-places.firebaseio.com/places/" +
 					key +
 					".json?auth=" +
 					token,
