@@ -9,6 +9,8 @@ import PlaceDetailScreen from "./src/screens/PlaceDetail/PlaceDetail";
 import SideDrawer from "./src/screens/SideDrawer/SideDrawer";
 import configureStore from "./src/store/configureStore";
 
+import navToAuth from './navigation'
+
 const store = configureStore();
 
 
@@ -61,27 +63,8 @@ Navigation.registerComponent(
 );
 
 // Start an App
-Navigation.events().registerAppLaunchedListener(() => {
-	Navigation.setRoot({
-		root: {
-			stack: {
-				children: [
-					{
-						component: {
-							name: "awesome-places.AuthScreen",
-							options: {
-								topBar: {
-									title: {
-										text: 'Welcome'
-									}
-								}
-							}
-						}
-					}
-				],
+Navigation.events().registerAppLaunchedListener(
+	navToAuth
+);
 
-			}
-		}
-	});
-
-});
+// export default navToAuth
