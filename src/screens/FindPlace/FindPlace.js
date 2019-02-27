@@ -3,6 +3,7 @@ import { Animated, StyleSheet, Text, TouchableOpacity, View } from "react-native
 import { connect } from "react-redux";
 import { Navigation } from 'react-native-navigation'
 import PlaceList from "../../components/PlaceList/PlaceList";
+import { getPlaces } from "../../store/actions";
 
 
 class FindPlaceScreen extends Component {
@@ -21,6 +22,14 @@ class FindPlaceScreen extends Component {
 
 		this.isSideDrawerVisible = false;
 		Navigation.events().bindComponent(this);
+	}
+
+	componentDidAppear() {
+
+		this.props.onLoadPlaces();
+		this.setState({
+			placesLoaded: true
+		});
 	}
 
 	navigationButtonPressed({ buttonId }) {
@@ -86,6 +95,7 @@ class FindPlaceScreen extends Component {
 	};
 
 	render() {
+
 		let content = (
 			<Animated.View
 				style={{
@@ -109,11 +119,7 @@ class FindPlaceScreen extends Component {
 		);
 		if (this.state.placesLoaded) {
 			content = (
-				<Animated.View
-					style={{
-						opacity: this.state.placesAnim
-					}}
-				>
+				<Animated.View>
 					<PlaceList
 						places={this.props.places}
 						onItemSelected={this.itemSelectedHandler}

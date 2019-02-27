@@ -90,7 +90,9 @@ export const placeAdded = () => {
 };
 
 export const getPlaces = () => {
+	console.log("Getting places 1...");
 	return dispatch => {
+		console.log("Getting places 2...");
 		dispatch(authGetToken())
 			.then(token => {
 				return fetch(
@@ -99,9 +101,11 @@ export const getPlaces = () => {
 				);
 			})
 			.catch(() => {
+				console.log("Getting places 3...")
 				alert("No valid token found!");
 			})
 			.then(res => {
+				console.log("Getting places 4...")
 				if (res.ok) {
 					return res.json();
 				} else {
@@ -109,8 +113,10 @@ export const getPlaces = () => {
 				}
 			})
 			.then(parsedRes => {
+				console.log("Getting places 5...")
 				const places = [];
 				for (let key in parsedRes) {
+					console.log("Getting places 6...")
 					places.push({
 						...parsedRes[key],
 						image: {
