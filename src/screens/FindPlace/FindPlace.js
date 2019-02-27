@@ -34,15 +34,6 @@ class FindPlaceScreen extends Component {
 
 	navigationButtonPressed({ buttonId }) {
 
-		// if (event.type === "ScreenChangedEvent") {
-		// 	if (event.id === "willAppear") {
-		// 		this.props.onLoadPlaces();
-		// 		// this.setState({
-		// 		//   placesLoaded: false
-		// 		// });
-		// 	}
-		// }
-
 		if (buttonId === "sideDrawerToggle") {
 
 			this.isSideDrawerVisible = !this.isSideDrawerVisible;
