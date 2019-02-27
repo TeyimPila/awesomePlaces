@@ -168,14 +168,8 @@ export const authClearStorage = () => {
 
 export const authLogout = () => {
 
-	console.log("Logging out");
-
 	return dispatch => {
-		console.log("Logging out 2...");
-
 		dispatch(authClearStorage()).then(() => {
-			console.log("Logging out 3...");
-
 			navToAuth()
 		});
 		dispatch(authRemoveToken());
